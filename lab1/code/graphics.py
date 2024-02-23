@@ -48,6 +48,7 @@ def draw_graphics(n_values, f):
         function_name = f.__name__+'(x)'
         
         plt.figure(figsize=(12, 4))
+        plt.ylim([-1,3])
         plt.subplot(121)
         plt.plot(x, f(x), label= function_name)
         plt.plot(x, equidistant_interpolated, label='P1,n (equidistant)')
@@ -76,7 +77,7 @@ def calculate_statistics(f, n_values):
     max_errors_equidistant = []
     max_errors_chebyshev = []
     for n in n_values:
-    # Равноотстоящие узлы для интерполяции f(x)
+        # Равноотстоящие узлы для интерполяции f(x)
         equidistant_nodes = choose_equidistant_nodes(n, -3, 3)
         equidistant_coefficients = newton_interpolation(equidistant_nodes, f(equidistant_nodes))
         equidistant_interpolated = np.polyval(equidistant_coefficients[::-1], x)
