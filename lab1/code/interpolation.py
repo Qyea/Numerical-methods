@@ -31,7 +31,7 @@ def choose_chebyshev_nodes(n):
     nodes = 0.5 * (a + b) + 0.5 * (b - a) * np.cos((2 * k + 1) * np.pi / (2 * (n + 1)))
     return nodes
 
-
+# Вычисление интерполяции
 def newton_interpolation(n, x, points, coefs):
     result = coefs[0]
     mult = 1
@@ -40,7 +40,7 @@ def newton_interpolation(n, x, points, coefs):
         result += coefs[i + 1] * mult
     return result
 
-
+# Создание таблицы
 def build_table(n, points, f):
     table = [[0 for j in range(n + 2)] for i in range(n + 1)]
     for i in range(n + 1):
@@ -96,7 +96,7 @@ def max_diff(n, f):
     c_max = max([abs(c[i] - F[i]) for i in range(101)])
     return p_max, c_max
 
-
+# Вывод таблицы ошибок
 def error_table(f):
     d = {'n': pd.Series([i for i in range(3, 31)]),
          'p_max': pd.Series([round(Decimal(max_diff(i, f)[0]), 4) for i in range(3, 31)]),
@@ -104,7 +104,7 @@ def error_table(f):
     df = pd.DataFrame(d)
     print(tabulate(df, headers='keys', tablefmt='psql'))
 
-
+# Отрисовка графиков
 def statistics(f, n, s):
     function_name = f.__name__+'(x)'
     label_name = s.__name__+'n(x)'
