@@ -18,7 +18,7 @@ integral = 0
 for i in range(n):
     integral += weights[i] * f(scaled_nodes[i])
 
-approximation = (b - a) * integral
+approximation = (b - a) * integral / 2
 exact_value = (1/15) * (5 * math.log(5) - 11 * math.log(2))
 
 print("Приближенное значение интеграла:", approximation)
